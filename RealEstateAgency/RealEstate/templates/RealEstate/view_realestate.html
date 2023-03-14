@@ -1,0 +1,42 @@
+{%extends 'base.html' %}
+
+{% block title%}{{ definite_realestate.adress }} {%endblock%}
+
+{%block  sidebar %}
+<div class = "container mt-3">
+  <h1>Доступная недвижимость</h1>
+    <div class="list-group">
+</div>
+
+{%endblock%}
+
+
+{% block content %}
+
+  <div class = "row">
+
+   <div class="card mg-3">
+  <div class="card-header">
+
+                <h5>{{ definite_realestate.adress }}</h5>
+
+  </div>
+  <div class="card-body">
+    <div class= "media">
+      <img src = {{ definite_realestate.photo.url }} alt = "", width = "450" >
+
+    <div class = "media.body">
+
+        <h5 class="card-title">Категория: {{definite_realestate.category}}</h5>
+    <p class="card-text">{{definite_realestate.description}}</p>
+
+    </div>
+  </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+  {%endblock%}

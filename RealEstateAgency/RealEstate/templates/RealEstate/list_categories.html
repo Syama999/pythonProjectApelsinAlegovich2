@@ -1,0 +1,11 @@
+{% load RealEstate_tags %}
+{%show_categories as cat%}
+<div class = "container mt-3">
+  <h1>Доступная недвижимость</h1>
+
+    <div class="list-group">
+{% for i in cat%}
+  <a href="{{i.get_absolute_url}}" class="list-group-item list-group-item-action">{{ i.category }}</a>
+      {%endfor%}
+</div>
+       </div>
