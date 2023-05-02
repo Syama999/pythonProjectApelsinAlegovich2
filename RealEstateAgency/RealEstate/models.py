@@ -24,6 +24,8 @@ class RealEstate(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%M/%D', verbose_name='Фотография', blank=True)
     adress = models.CharField(max_length=100, verbose_name= 'Описание', blank = True)
     views = models.IntegerField(default = 0)
+    seller = models.CharField(max_length=300, default='')
+
     def __str__(self):
         return self.description
 

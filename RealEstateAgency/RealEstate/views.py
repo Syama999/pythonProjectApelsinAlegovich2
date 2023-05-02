@@ -78,7 +78,7 @@ class HomeRealEstate(ListView):
 
 class EstateCat(ListView):
     model = RealEstate
-    context_object_name = 'category'
+    context_object_name = 'realobjects'
     template_name = 'RealEstate/getcat.html'
     allow_empty = False
 

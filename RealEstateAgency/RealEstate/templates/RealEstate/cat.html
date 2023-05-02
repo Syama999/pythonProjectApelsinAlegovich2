@@ -28,7 +28,7 @@
     <div class = "media.body">
 
         <h5 class="card-title">Категория: {{i.category}}</h5>
-    <p class="card-text">{{i.description}}</p>
+    <p class="card-text">{{i.description|safe}}</p>
     <a href="{{i.get_absolute_url}}" class="btn btn-primary">Узнать подробнее</a>
     </div>
   </div>

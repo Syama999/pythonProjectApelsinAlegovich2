@@ -1,19 +1,18 @@
 {% load RealEstate_tags %}
 {% state as RealEstate %}
 {% category as category %}
-<div align = 'middle'>
-<div class = "container mt-3">
-  <h1>Доступная недвижимость</h1>
 
-    <div class="list-group">
-{% for i in category%}
-
-  <a href="{% url 'j' i.pk %}" class="list-group-item list-group-item-action">{{ i.title }} <span class="badge bg-primary rounded-pill">{{i.cat}}</span> </a>
-
-      {%endfor%}
-</div>
-       </div>
+    <div class = "col-md-3">
+        <div align = 'center'>
+        <div class="list-group">
+            <h2>Категории:</h2>
+            {% for i in category%}
+            <a href="{% url 'j' i.pk %}" class="list-group-item list-group-item-action">{{ i.title }} <span class="badge bg-primary rounded-pill">{{i.cat}}</span> </a>
+            {%endfor%}
+        </div>
+        </div>
+    </div>
 <br>
 
-    </div>
+
 {#show_categories#}

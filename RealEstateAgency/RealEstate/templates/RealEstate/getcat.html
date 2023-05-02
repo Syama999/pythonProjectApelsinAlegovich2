@@ -2,41 +2,39 @@
 
 {% block title%}{{ title }} {%endblock%}
 
-{%block  sidebar %}
-<div class = "container mt-3">
-  <h1>Доступная недвижимость</h1>
-    <div class="list-group">
-</div>
+{% block sidebar %}
+{%include 'inc/_sidebar.html'%}
+{% endblock %}
 
-{%endblock%}
+<div class = "col-md-8">
+        <div align = 'center'>
+            <h2>Недвижимость:</h2>
+        {% for i in realobjects%}
+
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3>{{ i.adress }}</h3>
+            <div class="card-body">
+              <div class= "media">
+                {%if i.photo%}
+                <img src = {{ i.photo.url }} alt = "", width = "500" class = 'mr-3'>
+                {%else%}
+                <img src = 'https://picsum.photos/seed/picsum/200/300' alt = "", width = "500" class = 'mr-3'>
+                {%endif%}
+              <div class = "media.body">
+              <h4 class="card-title">Категория: {{i.category}}</h4>
+              <p class="card-text">{{i.description}}</p>
+              <a href= "{{i.get_absolute_url}}" class="btn btn-primary">Узнать подробнее</a>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+            </div>
+            </div>
 
 
-{% block content %}
-{% for i in category%}
-  <div class = "row">
 
-   <div class="card mg-3">
-  <div class="card-header">
 
-                <h4>{{ i.adress }}</h4>
 
-  </div>
-  <div class="card-body">
-    <div class= "media">
-      <img src = {{ i.photo.url }} alt = "", width = "450" >
-
-    <div class = "media.body">
-
-        <h5 class="card-title">Категория: {{i.category}}</h5>
-    <p class="card-text">{{i.description}}</p>
-    <a href="{{i.get_absolute_url}}" class="btn btn-primary">Узнать подробнее</a>
-    </div>
-  </div>
-  </div>
-</div>
-
-  </div>
-
-</div>
-{%endfor%}
-  {%endblock%}

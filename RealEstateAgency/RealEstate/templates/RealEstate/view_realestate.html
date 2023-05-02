@@ -1,42 +1,51 @@
-{%extends 'base.html' %}
+<!doctype html>
+{%load static%}
+<html lang="ar" ></html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block title%}{{ definite_realestate.adress }} {%endblock%}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Недвижимость{%endblock%}</title>
+  </head>
+  <body>
+{% include 'inc/_nav.html'%}
+<div class = "container-mt-3">
+    <div class = "row">
+        {%block sidebar%}
+        {%include 'inc/_sidebar.html'%}
+        {%endblock%}
 
-{%block  sidebar %}
-<div class = "container mt-3">
-  <h1>Доступная недвижимость</h1>
-    <div class="list-group">
-</div>
-
-{%endblock%}
-
-
-{% block content %}
-
-  <div class = "row">
-
+<div class = "col-md-7">
+  <div align = 'center'>
    <div class="card mg-3">
   <div class="card-header">
-
-                <h5>{{ definite_realestate.adress }}</h5>
-
+                <h4>{{ definite_realestate.adress }}</h4>
   </div>
   <div class="card-body">
     <div class= "media">
-      <img src = {{ definite_realestate.photo.url }} alt = "", width = "450" >
+      <img src = {{ definite_realestate.photo.url }} alt = "", width = "600" >
 
     <div class = "media.body">
 
-        <h5 class="card-title">Категория: {{definite_realestate.category}}</h5>
+        <h4 class="card-title">Категория: {{definite_realestate.category}}</h4>
     <p class="card-text">{{definite_realestate.description}}</p>
-
+        <p><h3 class="card-text">Стоимость:{{definite_realestate.views}} руб.</h3> </p>
+        <p><h4 class="card-text">Контакт продавца:{{definite_realestate.seller}}</h4></p>
+</div>
     </div>
   </div>
   </div>
 </div>
+</body>
+</html>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-  </div>
 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
-  {%endblock%}
+

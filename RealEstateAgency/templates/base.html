@@ -1,6 +1,6 @@
 <!doctype html>
 {%load static%}
-<html lang="ar" dir="ltr">
+<html lang="ar" ></html>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,24 +13,44 @@
   </head>
   <body>
 {% include 'inc/_nav.html'%}
+<div class = "container-mt-3">
+    <div class = "row">
+        {%block sidebar%}
+        {%include 'inc/_sidebar.html'%}
+        {%endblock%}
+        <div class = "col-md-7">
+        <div align = 'center'>
+            <h2>Недвижимость:</h2>
+            </div>
+        {% for i in realobjects%}
+            <div align = 'center'>
+          <div class="card mb-3">
+            <div class="card-header">
+              <h3>{{ i.adress }}</h3>
+            <div class="card-body">
+              <div class= "media">
+                {%if i.photo%}
+                <img src = {{ i.photo.url }} alt = "", width = "500" class = 'mr-3'>
+                {%else%}
+                <img src = 'https://picsum.photos/seed/picsum/200/300' alt = "", width = "500" class = 'mr-3'>
+                {%endif%}
+              <div class = "media.body">
+              <h4 class="card-title">Категория: {{i.category}}</h4>
+              <p class="card-text">{{i.description}}</p>
+              <a href= "{{i.get_absolute_url}}" class="btn btn-primary">Узнать подробнее</a>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+            </div>
 
-<div align = 'center'>
-<div class = "col-md-5">
-{% block sidebar %}
-<div class = "container mt-3">
-  <h1>Доступная недвижимость</h1>
+    {% endfor %}
 
-    <div class="list-group">
-{% for i in hhh%}
-  <a href="{% url 'j' i.pk %}" class="list-group-item list-group-item-action">{{ i.category_id }}</a>
-      {%endfor%}
-</div>
   </div>
-  </div>
+      </div>
+    </div>
 </div>
-{% endblock%}
-
-<div class = "col-md-12">
     {% if messages%}
    {% for message in messages%}
     {% if message.tags == 'error'%}
@@ -42,33 +62,8 @@
     {%endif%}
     {%endfor%}
     {%endif%}
-{% block content %}
 
-  <div class = "row">
 
-    {% for i in RealEstate%}
-   <div class="card mg-6">
-  <div class="card-header">
-
-    <h5>{{ i.adress }}</h5>
-
-  </div>
-  <div class="card-body">
-    <div class= "media">
-      <img src = {{ i.photo.url }} alt = "", width = "500" >
-
-    <div class = "media.body">
-        <h5 class="card-title">Категория: {{i.category}}</h5>
-    <p class="card-text">{{i.description}}</p>
-    <a href="#" class="btn btn-primary">Узнать подробнее</a>
-    </div>
-  </div>
-  </div>
-</div>
-    {% endfor %}
-  </div>
-{% endblock%}
-</div>
 
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -79,7 +74,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-<div align = 'center'>
+
 {% if page_obj.has_other_pages%}
 <nav aria-label="...">
 
@@ -87,7 +82,7 @@
 
        {% if page_obj.has_previous%}
       <li class="page-item">
-      <a class="page-link" href="?page={{page_obj.previous_page_number}}" >Previous</a>
+      <a class="page-link" href="?page={{page_obj.previous_page_number}}" >Назад</a>
       </li>
       {%endif%}
     {% for i in page_obj.paginator.page_range%}
@@ -101,13 +96,13 @@
     {%endfor%}
       {% if page_obj.has_next%}
       <li class="page-item">
-      <a class="page-link" href="?page={{page_obj.next_page_number}}" >Next</a>
+      <a class="page-link" href="?page={{page_obj.next_page_number}}" >Далее</a>
       </li>
       {%endif%}
 
   </ul>
 </nav>
 {%endif%}
-  </div>
+
   </body>
 </html>

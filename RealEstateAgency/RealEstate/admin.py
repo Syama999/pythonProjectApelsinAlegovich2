@@ -5,7 +5,8 @@ from django import forms
 
 
 class RealestateAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorUploadingWidget())
+    #description = forms.CharField(widget=CKEditorUploadingWidget())
+    pass
     class Meta:
         model = RealEstate
         fields = '__all__'
